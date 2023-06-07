@@ -1,0 +1,189 @@
+==============================
+
+Struct Cola
+{
+int ID
+Time H_Llega
+Cola *Sig
+Cola *Ant
+}
+*Frente, *P, *Fin;
+
+==============================
+
+Cola_Llena()
+| Si ( new (p) == Nill) Ent
+| | Return ('V')
+| |
+| Sino
+| | Return ('F')
+| |
+| Fsi
+|
+Fin Cola_Llena()
+
+==============================
+
+Cola_Vacia()
+| Si ( Frente == Nill) Ent
+| | Return ('V')
+| |
+| Sino
+| | Return ('F')
+| |
+| Fsi
+|
+Fin Cola_Vacia()
+
+==============================
+
+Vaciar_Cola()
+| Si ( Cola_Vacia = 'V') Ent
+| | Escriba ("No hay Clientes")
+| | Dato <- -1
+| |
+| Sino
+| | Repita
+| | | Dato <- Frente.ID
+| | | P <- Frente
+| | | CNA <- CNA +1
+| | | Dispose (P)
+| | |
+| | HQ (Cola_Vacia() = 'V')
+| |
+| Fsi
+|
+Fin Vaciar_Cola()
+
+==============================
+Mostrar_La_Cola()
+| Si ( Cola_Vacia = 'V') Ent
+| | Escriba ("No hay Clientes")
+| |
+| Sino
+| | P <- Frente
+| | MQ (P <> Nil) Haga
+| | | Escriba (P.ID, P.H_llega)
+| | | P <- P.Sig
+| | |
+| | FMQ
+| |
+| Fsi
+|
+Fin Mostrar_La_Cola()
+
+==============================
+
+Meter_En_La_Cola
+| Si(Cola_Llena = 'V') Ent
+| | Escriba ("No mas Clientes")
+| | 
+| Sino
+| | Repita
+| | | x <- Random
+| | | 
+| | | Ficho_Ok='V'
+| | HQ (Ficho_Ok ='V')
+
+==============================
+Sacar_De_La_Cola()
+| Si (Cola_Vacia = 'V' Ent
+| | Escriba ("No hay Clientes")
+| | Dato <- -1
+| | 
+| Sino
+| | Dato <- Frente.ID
+| | P <- Frente
+| | Frente <- Frente.Sig
+| | NCA <- NCA+1
+| | T_ENCOLA <- Hora_Sis() - P.H_Llega
+| | TOTTENCOLA <- TOTTENCOLA + T_ENCOLA
+| | Dispose (P)
+| |
+| Fsi
+| Return (Dato)
+| 
+Fin Sacar_De_La_Cola()
+==============================
+
+Casos Especiales
+| Repita
+| | x <- Ramdon (5)
+| | Escriba ("======Menu de Casos Especiales======")
+| | Escriba ("1. Necesidades Fisiológicas")
+| | Escriba ("2. Abandonar")
+| | Escriba ("3. Retirarse Temporalmente")
+| | Segun x Hacer
+| | |          1.
+| | |             Repita
+| | |             | Escriba ("Señor usuario, digite su ficho")
+| | |             | Lea(W)
+| | |             | Si (Consultar(W) = 'V') Ent
+| | |             | | Q <- Cabeza
+| | |             | |
+| | |             | | MQ (Q.Sig <> W) Haga
+| | |             | | | Q <- Q.Sig
+| | |             | | |
+| | |             | | FMQ
+| | |             | | 
+| | |             | | Me hace falta sacar Nodo
+| | |             | | J <- Ramdon()
+| | |             | | Escriba ("Su código es ", J) 
+| | |             | | Escriba("Tendrá maximo 5 minutos, de lo contrario pierde su turno")
+| | |             | | Escriba("Al regresar debe digitar el codigo")
+| | |             | | Ida <- Hora_Sistem()
+| | |             | | Escriba ("Digite el codigo")
+| | |             | | Lea (codigo)
+| | |             | | Vuelta <- Hora_Sistem()
+| | |             | | Diferencia = Vuelta - Ida
+| | |             | | Si (J =codigo) Ent
+| | |             | | | Si (Diferencia <= 00:05:00) Ent 
+| | |             | | | | 
+| | |             | | | | //Verifico que al amterior todavia este en la fila yEngancho el nodo
+| | |             | | | | 
+| | |             | | | Sino
+| | |             | | | | Escriba("Limite de tiempo excedido") 
+| | |             | | | | //No hago nada puesto que el nodo esta afuera
+| | |             | | | |
+| | |             | | | Fsi
+| | |             | | Sino
+| | |             | | | Escriba ("Error: Digite nuevamente el codigo")
+| | |             | | |
+| | |             | | Fsi
+| | |             | | 
+| | |             | Sino 
+| | |             | |  Esbriba("Ficho no encontrado")
+| | |             | |
+| | |             | Fsi
+| | |             | Escriba ("Desea Continuar: S/N") 
+| | |             | Lea (B)
+| | |             | 
+| | |             HQ (B= "N')
+
+==============================
+
+Principal_Simulacion_Banco
+| Escriba ("Hora Inicial") Lea(H_Ini)
+| Escriba ("Hora Final") Lea(H_Fin)
+|
+| MQ (Hora_Sistema() >= H_Ini) AND (Hora_Sistema() <= H_Fin) Haga
+| | OP <- Random(5)
+| | 
+| | Segun OP Haga
+| | | 1: Meter_En_La_Cola()
+| | | 2: Sacar_De_La_Cola()
+| | | 3: Mostrar_En_La_Cola()
+| | | 4: Vaciar_La_Cola()
+| | | 5: Salida_No_Fifo()
+| | |
+| | Fin Segun
+| |
+| FMQ
+| Resultados ()
+|
+Fin Principal_Simulacion_Banco
+
+
+
+
+
